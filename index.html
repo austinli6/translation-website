@@ -1,70 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Active Translation Website</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-    }
-    .container {
-      text-align: center;
-    }
-    select {
-      margin: 10px;
-      padding: 10px;
-    }
-    .content {
-      margin-top: 20px;
-      font-size: 18px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Translator</title>
+    <script>
+        async function translateText(language) {
+            const inputText = document.getElementById('englishText').value;
+            const outputDiv = document.getElementById('translationText');
+
+            if (!inputText.trim()) {
+                outputDiv.textContent = 'Please enter text to translate.';
+                return;
+            }
+
+            let langPair;
+            if (language === 'french') {
+                langPair = 'en|fr';
+            } else if (language === 'german') {
+                langPair = 'en|de';
+            } else if (language === 'spanish') {
+                langPair = 'en|es';
+            } else if (language === 'chinese') {
+                langPair = 'en|zh-CN';
+            }
+
+            try {
+                const response = await fetch('https://api.mymemory.translated.net/get?q=' + encodeURIComponent(inputText) + '&langpair=' + langPair);
+                const data = await response.json();
+
+                if (data && data.responseData && data.responseData.translatedText) {
+                    outputDiv.textContent = data.responseData.translatedText;
+                } else {
+                    outputDiv.textContent = 'Error: Unable to fetch translation.';
+                }
+            } catch (error) {
+                outputDiv.textContent = 'Error: ' + error.message;
+            }
+        }
+    </script>
 </head>
 <body>
-  <div class="container">
-    <h1>Welcome to Active Translation</h1>
-    <p>Select a language to translate the text:</p>
-    <select id="languageSelector">
-      <option value="en">English</option>
-      <option value="es">Spanish</option>
-      <option value="fr">French</option>
-      <option value="de">German</option>
-      <option value="zh-CN">Chinese</option>
-   
-    </select>
-    <div class="content" id="content">
-      Hello! This is a sample text for translation.
-    </div>
-  </div>
+    <h1>English Translator</h1>
+    <p>Enter your English text below and select a language to see the translation.</p>
 
-  <script>
-    const contentElement = document.getElementById("content");
-    const languageSelector = document.getElementById("languageSelector");
+    <textarea id="englishText" rows="4" cols="50" placeholder="Enter English text here..."></textarea>
+    <br>
+    <button onclick="translateText('french')">Translate to French</button>
+    <button onclick="translateText('german')">Translate to German</button>
+    <button onclick="translateText('spanish')">Translate to Spanish</button>
+    <button onclick="translateText('chinese')">Translate to Chinese</button>
 
-    // Function to handle language changes
-    function translateContent() {
-      const selectedLanguage = languageSelector.value;
-      const originalText = "Hello! This is a sample text for translation.";
-
-      // Google Translate API simulation using a translation object
-      const translations = {
-        "en": "Hello! This is a sample text for translation.",
-        "es": "¡Hola! Este es un texto de muestra para traducción.",
-        "fr": "Bonjour! Ceci est un texte d'exemple pour la traduction.",
-        "de": "Hallo! Dies ist ein Beispieltext zur Übersetzung.",
-        "zh-CN": "你好！这是用于翻译的示例文本。"
-       
-        
-      };
-
-      // Update the content with the translated text
-      contentElement.textContent = translations[selectedLanguage] || originalText;
-    }
-
-    // Add event listener to the dropdown
-    languageSelector.addEventListener("change", translateContent);
-  </script>
+    <h2>Translation:</h2>
+    <div id="translationText" style="border: 1px solid #ccc; padding: 10px; min-height: 50px;"></div>
 </body>
 </html>
+
