@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Translator</title>
+    <title>English Translator version 1</title>
     <script>
         async function translateText(language) {
             const inputText = document.getElementById('englishText').value;
@@ -23,7 +23,8 @@
                 langPair = 'en|es';
             } else if (language === 'chinese') {
                 langPair = 'en|zh-CN';
-            }
+            } else if (language === ''italian') {
+                langpair = 'en|it';
 
             try {
                 const response = await fetch('https://api.mymemory.translated.net/get?q=' + encodeURIComponent(inputText) + '&langpair=' + langPair);
