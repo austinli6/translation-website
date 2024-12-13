@@ -14,6 +14,10 @@ Spanish
 
 Chinese (Simplified)
 
+Italian
+
+Portuguese
+
 Interactive and user-friendly interface.
 
 Real-time translation using the MyMemory translation API.
@@ -34,6 +38,10 @@ Translate to Spanish
 
 Translate to Chinese
 
+Translate to Italian
+
+Translate to Portuguese
+
 The translated text will appear below in the translation box.
 
 Requirements
@@ -50,7 +58,7 @@ Implementation Details
 
 API Used: MyMemory Translation API.
 
-Languages Supported: French, German, Spanish, Chinese (Simplified).
+Languages Supported: French, German, Spanish, Chinese (Simplified), Italian, Portuguese
 
 Logic: JavaScript function dynamically generates requests to the translation API based on user input and selected target language.
 
