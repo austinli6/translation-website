@@ -25,6 +25,8 @@
                 langPair = 'en|zh-CN';
             } else if (language === 'italian') {
                 langpair = 'en|it';
+            } else if (language === 'portuguese') {
+                langpaor = 'en|pt';
             }
             try {
                 const response = await fetch('https://api.mymemory.translated.net/get?q=' + encodeURIComponent(inputText) + '&langpair=' + langPair);
@@ -52,6 +54,7 @@
     <button onclick="translateText('spanish')">Translate to Spanish</button>
     <button onclick="translateText('chinese')">Translate to Chinese</button>
     <button onclick="translateText('italian')">Translate to Italian</button>
+    <button onclick="translateText('portuguese')">Translate to Portuguese</button>
 
     <h2>Translation:</h2>
     <div id="translationText" style="border: 1px solid #ccc; padding: 10px; min-height: 50px;"></div>
