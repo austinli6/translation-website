@@ -52,13 +52,14 @@
                 const response = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(inputText)}&langpair=${langPair}`);
                 const data = await response.json();
 
+   // Check if the response contains translation data
                 if (data && data.responseData && data.responseData.translatedText) {
                     outputDiv.textContent = data.responseData.translatedText;
                 } else {
                     outputDiv.textContent = 'Error: Unable to fetch translation.';
                 }
             } catch (error) {
-                outputDiv.textContent = 'Error: ${error.message}`;
+                outputDiv.textContent = `Error: ${error.message}`;
             }
         }
     </script>
@@ -68,7 +69,7 @@
     <p>Enter your English text below and select a language to see the translation.</p>
 
     <textarea id="englishText" rows="4" cols="50" placeholder="Enter English text here..."></textarea>
-    <br>
+    <br>        
     <button onclick="translateText('french')">Translate to French</button>
     <button onclick="translateText('german')">Translate to German</button>
     <button onclick="translateText('spanish')">Translate to Spanish</button>
