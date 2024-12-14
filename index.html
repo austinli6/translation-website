@@ -8,28 +8,48 @@
         async function translateText(language) {
             const inputText = document.getElementById('englishText').value;
             const outputDiv = document.getElementById('translationText');
-
+            // Check if input text is empty
             if (!inputText.trim()) {
                 outputDiv.textContent = 'Please enter text to translate.';
                 return;
             }
+        
+            // Language pair mapping 
+            const LangPair = {
+                "french": "en|fr",
+                "spanish": "en|es",
+                "german": "en|de",
+                "chinese": "en|zh-CN",
+                "italian": "en|it",
+                "portuguese": "en|pt",
+                "arabic": "en|ar",
+                "dutch": "en|nl",
+                "greek": "en|el",
+                "hebrew": "en|he",
+                "hindi": "en|hi",
+                "indonesian": "en|id",
+                "japanese": "en|ja",
+                "korean": "en|ko",
+                "malay": "en|ms",
+                "norwegian": "en|no",
+                "polish": "en|pl",
+                "romanian": "en|ro",
+                "russian": "en|ru",
+                "swedish": "en|sv",
+                "tagalog": "en|tl",
+                "thai": "en|th",
+                "turkish": "en|tr"
+            };
 
-            let langPair;
-            if (language === 'french') {
-                langPair = 'en|fr';
-            } else if (language === 'german') {
-                langPair = 'en|de';
-            } else if (language === 'spanish') {
-                langPair = 'en|es';
-            } else if (language === 'chinese') {
-                langPair = 'en|zh-CN';
-            } else if (language === 'italian') {
-                langPair = 'en|it';
-            } else if (language === 'portuguese') {
-                langPair = 'en|pt';
+            const LangPair = LangPairs[language] 
+               // Check if the language pair is valid
+            if (!langPair) {
+                outputDiv.textContent = 'Error: Unsupported language selected.';
+                return;
             }
+            // Fetch translation
             try {
-                const response = await fetch('https://api.mymemory.translated.net/get?q=' + encodeURIComponent(inputText) + '&langpair=' + langPair);
+                const response = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(inputText)}&langpair=${langPair}`);
                 const data = await response.json();
 
                 if (data && data.responseData && data.responseData.translatedText) {
@@ -38,7 +58,7 @@
                     outputDiv.textContent = 'Error: Unable to fetch translation.';
                 }
             } catch (error) {
-                outputDiv.textContent = 'Error: ' + error.message;
+                outputDiv.textContent = 'Error: ${error.message}`;
             }
         }
     </script>
@@ -55,9 +75,25 @@
     <button onclick="translateText('chinese')">Translate to Chinese</button>
     <button onclick="translateText('italian')">Translate to Italian</button>
     <button onclick="translateText('portuguese')">Translate to Portuguese</button>
-
+    <button onclick="translateText('arabic')">Translate to Arabic</button>
+    <button onclick="translateText('dutch')">Translate to Dutch</button>
+    <button onclick="translateText('greek')">Translate to Greek</button>
+    <button onclick="translateText('hebrew')">Translate to Hebrew</button>
+    <button onclick="translateText('hindi')">Translate to Hindi</button>
+    <button onclick="translateText('indonesian')">Translate to Indonesian</button>
+    <button onclick="translateText('japanese')">Translate to Japanese</button>
+    <button onclick="translateText('korean')">Translate to Korean</button>
+    <button onclick="translateText('malay')">Translate to Malay</button>
+    <button onclick="translateText('norwegian')">Translate to Norwegian</button>
+    <button onclick="translateText('polish')">Translate to Polish</button>
+    <button onclick="translateText('romanian')">Translate to Romanian</button>
+    <button onclick="translateText('russian')">Translate to Russian</button>
+    <button onclick="translateText('swedish')">Translate to Swedish</button>
+    <button onclick="translateText('tagalog')">Translate to Tagalog</button>
+    <button onclick="translateText('thai')">Translate to Thai</button>
+    <button onclick="translateText('turkish')">Translate to Turkish</button>
+    	
     <h2>Translation:</h2>
     <div id="translationText" style="border: 1px solid #ccc; padding: 10px; min-height: 50px;"></div>
 </body>
 </html>
-
