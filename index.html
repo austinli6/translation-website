@@ -8,14 +8,15 @@
         async function translateText(language) {
             const inputText = document.getElementById('englishText').value;
             const outputDiv = document.getElementById('translationText');
+
             // Check if input text is empty
             if (!inputText.trim()) {
                 outputDiv.textContent = 'Please enter text to translate.';
                 return;
             }
-        
-            // Language pair mapping 
-            const LangPair = {
+
+            // Language pair mapping
+            const langPairs = {
                 "french": "en|fr",
                 "spanish": "en|es",
                 "german": "en|de",
@@ -41,8 +42,9 @@
                 "turkish": "en|tr"
             };
 
-            const LangPair = LangPairs[language] 
- // Check if the language pair is valid
+            const langPair = langPairs[language];
+
+            // Check if the language pair is valid
             if (!langPair) {
                 outputDiv.textContent = 'Error: Unsupported language selected.';
                 return;
@@ -69,9 +71,8 @@
     <h1>English Translator</h1>
     <p>Enter your English text below and select a language to see the translation.</p>
 
-
     <textarea id="englishText" rows="4" cols="50" placeholder="Enter English text here..."></textarea>
-    <br>        
+    <br>
     <button onclick="translateText('french')">Translate to French</button>
     <button onclick="translateText('german')">Translate to German</button>
     <button onclick="translateText('spanish')">Translate to Spanish</button>
