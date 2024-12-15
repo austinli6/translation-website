@@ -6,17 +6,51 @@ Features
 
 Translate English text to:
 
-French
+French (fr)
 
-German
+German(de)
 
-Spanish
+Spanish(es)
 
-Chinese (Simplified)
+Chinese (Simplified)(zh-CN)
 
-Italian
+Italian(it)
 
-Portuguese
+Portuguese(pt)
+  
+Arabic (ar)
+
+Dutch (nl)
+
+Greek (el)
+
+Hebrew (he)
+
+Hindi (hi)
+
+Indonesian (id)
+
+Japanese (ja)
+
+Korean (ko)
+
+Malay (ms)
+
+Norwegian (no)
+
+Polish (pl)
+
+Romanian (to)
+
+Russian (ru)
+
+Swedish (sv)
+
+Tagalog (tl)
+
+Thai (the)
+
+Turkish (tr)
 
 Interactive and user-friendly interface.
 
@@ -32,15 +66,49 @@ Click the button corresponding to the desired target language:
 
 Translate to French
 
-Translate to German
-
 Translate to Spanish
+
+Translate to German
 
 Translate to Chinese
 
 Translate to Italian
 
 Translate to Portuguese
+
+Translate to Arabic
+
+Translate to Dutch
+
+Translate to Greek
+
+Translate to Hebrew
+
+Translate to Hindi
+
+Translate to Indonesian
+
+Translate to Japanese
+
+Translate to Korean
+
+Translate to Malay
+
+Translate to Norwegian
+
+Translate to Polish
+
+Translate to Romanian
+
+Translate to Russian
+
+Translate to Swedish
+
+Translate to Tagalog
+
+Translate to Thai
+
+Translate to Turkish
 
 The translated text will appear below in the translation box.
 
@@ -58,7 +126,7 @@ Implementation Details
 
 API Used: MyMemory Translation API.
 
-Languages Supported: French, German, Spanish, Chinese (Simplified), Italian, Portuguese
+Languages Supported: French, German, Spanish, Chinese (Simplified), Italian, Portuguese, Arabic, Dutch, Greek, Hebrew, Hindi, Indonesian, Japanese, Korean, Malay, Norwegian, Polish, Romanian, Russian, Swedish, Tagalog, Thai,and Turkish
 
 Logic: JavaScript function dynamically generates requests to the translation API based on user input and selected target language.
 
